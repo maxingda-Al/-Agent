@@ -1,0 +1,19 @@
+# 环境变量（含密钥）
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# 运行产物
+logs/
+chroma_db/
+*.sqlite3
+md5.text
+
+# IDE / 工具
+.claude/
+.idea/
+.vscode/
+.DS_Store

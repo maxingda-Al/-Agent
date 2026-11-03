@@ -42,7 +42,7 @@ def get_user_id() -> str:
 def get_current_month() -> str:
     return random.choice(month_arr)
 
-
+@tool(description="获得用户其他信息")
 def generate_external_data():
     if not external_data:
         if "external_data_path" not in agent_conf:

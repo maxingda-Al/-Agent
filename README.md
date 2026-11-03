@@ -1,4 +1,4 @@
-# 智扫通 · 扫地机器人智能客服 Agent
+# 扫地机器人智能客服 Agent
 
 基于 LangChain 1.x + LangGraph 的智能客服 Agent 示例项目：ReAct 自主决策、多工具编排、RAG 知识检索、中间件监控与意图驱动的提示词动态切换，前端使用 Streamlit 提供流式对话。
 
@@ -73,6 +73,5 @@ streamlit run app.py
 
 ## 说明
 
-- 项目初始框架来自 LangChain 课程实践，在此基础上完成了代码实现与二次开发。
 - `get_weather`、`get_user_location`、`get_user_id`、`get_current_month` 为演示用的模拟数据源。
 - 不要提交 `.env`；`.env`、`chroma_db/`、`md5.text` 均已在 `.gitignore` 中排除。

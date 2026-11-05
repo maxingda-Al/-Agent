@@ -5,6 +5,11 @@ logger_handler.py	统一日志配置。get_logger() 创建同时输出到控制�
 config_handler.py	YAML 配置加载器。分别读取 config/rag.yml、chroma.yml、prompt.yml、agent.yml，并在模块导入时暴露 rag_conf、chroma_conf、prompts_conf、agent_conf 四个字典。
 prompt_loader.py	提示词文件读取。根据 prompt.yml 里配置的路径，读取主系统提示词、RAG 总结提示词、报告生成提示词，返回纯文本字符串。
 file_handler.py	文件处理工具。① get_file_md5_hex 分块计算 MD5（用于知识库去重）；② listdir_with_allowed_type 按后缀筛选文件；③ pdf_loader / txt_loader 把 PDF、TXT 转成 LangChain Document 列表。
+agent/ — Agent 层
+文件	作用
+react_agent.py	ReAct Agent 构建与流式输出。ReactAgent 类用 create_agent 组合 chat_model、7 个工具、系统提示词和 4 个中间件；execute_stream(query, history) 流式运行 Agent，逐块 yield 模型的最终回复内容。
+tools/agent_tools.py	Agent 工具定义。提供 7 个工具供 ReAct 决策调用（知识检索、天气、定位、用户 ID、月份、使用记录查询、报告上下文注入）。
+tools/middleware.py	Agent 中间件。负责工具调用监控、模型调用前日志、报告上下文切换与提示词动态切换。
 rag/ — 检索增强生成
 文件	作用
 vector_store.py	向量库服务。VectorStoreService 初始化 Chroma 集合、文本分片器和嵌入模型；load_document() 扫描数据目录，按 MD5 跳过已入库文件，加载→分片→写入向量库；get_retriever() 返回检索器。
